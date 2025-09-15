@@ -3,354 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneD : Thailand - Trade & Agriculture Dashboard</title>
+    <title>OneD - Thailand Digital Economy Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
-        .stat-card { transition: transform 0.2s ease-in-out; }
-        .stat-card:hover { transform: translateY(-2px); }
-        .pulse-dot { animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="gradient-bg text-white shadow-lg">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-                        <span class="text-2xl font-bold text-blue-600">1D</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl font-bold text-blue-900">1D</span>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold">OneD : Thailand</h1>
-                        <p class="text-blue-100">Trade & Agriculture Monitoring Dashboard</p>
+                        <h1 class="text-2xl font-bold">OneD Dashboard</h1>
+                        <p class="text-yellow-200">Thailand Digital Economy Portal</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <div class="text-right">
-                        <p class="text-sm text-blue-100">Last Updated</p>
-                        <p class="font-semibold" id="lastUpdate"></p>
+                        <p class="text-sm text-yellow-200">Last Updated</p>
+                        <p class="font-semibold" id="lastUpdated"></p>
                     </div>
-                    <div class="w-3 h-3 bg-green-400 rounded-full pulse-dot"></div>
+                    <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
+                        <span class="text-blue-900 font-semibold">TH</span>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Main Dashboard -->
-    <div class="container mx-auto px-6 py-8">
-        <!-- Key Statistics Row -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div class="stat-card bg-white rounded-lg p-6 card-shadow">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Key Metrics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Tax Revenue Card -->
+            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-medium text-gray-600">Total Exports</p>
-                        <p class="text-2xl font-bold text-green-600" id="totalExports">$284.5B</p>
-                        <p class="text-xs text-green-500">↗ +12.3% YoY</p>
+                        <p class="text-sm font-medium text-gray-600">Tax Revenue (YTD)</p>
+                        <p class="text-2xl font-bold text-yellow-600">฿2.84T</p>
+                        <p class="text-sm text-yellow-500">↗ +8.2% vs last year</p>
                     </div>
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                        <span class="text-green-600 text-xl">📤</span>
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">💰</span>
                     </div>
                 </div>
             </div>
 
-            <div class="stat-card bg-white rounded-lg p-6 card-shadow">
+            <!-- Export Value Card -->
+            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-medium text-gray-600">Total Imports</p>
-                        <p class="text-2xl font-bold text-blue-600" id="totalImports">$251.2B</p>
-                        <p class="text-xs text-blue-500">↗ +8.7% YoY</p>
+                        <p class="text-sm font-medium text-gray-600">Export Value</p>
+                        <p class="text-2xl font-bold text-blue-800">$285.4B</p>
+                        <p class="text-sm text-blue-700">↗ +12.5% vs last year</p>
                     </div>
                     <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <span class="text-blue-600 text-xl">📥</span>
+                        <span class="text-2xl">📦</span>
                     </div>
                 </div>
             </div>
 
-            <div class="stat-card bg-white rounded-lg p-6 card-shadow">
+            <!-- Import Value Card -->
+            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-medium text-gray-600">Active Farmers</p>
-                        <p class="text-2xl font-bold text-orange-600" id="activeFarmers">2.8M</p>
-                        <p class="text-xs text-orange-500">↗ +3.2% YoY</p>
+                        <p class="text-sm font-medium text-gray-600">Import Value</p>
+                        <p class="text-2xl font-bold text-yellow-600">$267.8B</p>
+                        <p class="text-sm text-yellow-500">↗ +9.8% vs last year</p>
                     </div>
-                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                        <span class="text-orange-600 text-xl">👨‍🌾</span>
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">🚢</span>
                     </div>
                 </div>
             </div>
 
-            <div class="stat-card bg-white rounded-lg p-6 card-shadow">
+            <!-- Trade Balance Card -->
+            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Trade Balance</p>
-                        <p class="text-2xl font-bold text-purple-600" id="tradeBalance">+$33.3B</p>
-                        <p class="text-xs text-purple-500">↗ +15.8% YoY</p>
+                        <p class="text-2xl font-bold text-blue-800">$17.6B</p>
+                        <p class="text-sm text-blue-700">↗ +24.3% vs last year</p>
                     </div>
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <span class="text-purple-600 text-xl">⚖️</span>
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">⚖️</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Main Content Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Left Column - Charts -->
-            <div class="lg:col-span-1 space-y-6">
-                <!-- Trade Overview Chart -->
-                <div class="bg-white rounded-lg p-6 card-shadow">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Monthly Trade Overview</h3>
-                    <canvas id="tradeChart" width="400" height="300"></canvas>
-                </div>
-
-                <!-- Top Export Products -->
-                <div class="bg-white rounded-lg p-6 card-shadow">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Top Export Products</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <span class="text-lg">🌾</span>
-                                <span class="text-sm font-medium">Rice</span>
-                            </div>
-                            <span class="text-sm font-bold text-green-600">$12.5B</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <span class="text-lg">🚗</span>
-                                <span class="text-sm font-medium">Automobiles</span>
-                            </div>
-                            <span class="text-sm font-bold text-green-600">$28.3B</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <span class="text-lg">💻</span>
-                                <span class="text-sm font-medium">Electronics</span>
-                            </div>
-                            <span class="text-sm font-bold text-green-600">$45.2B</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <span class="text-lg">🦐</span>
-                                <span class="text-sm font-medium">Seafood</span>
-                            </div>
-                            <span class="text-sm font-bold text-green-600">$8.7B</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Center Column - Thailand Map -->
-            <div class="lg:col-span-1">
-                <div class="bg-white rounded-lg p-6 card-shadow h-full flex flex-col items-center justify-center">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-6">Thailand Trade Regions</h3>
-                    <div class="relative">
-                        <img src="https://static.vecteezy.com/system/resources/previews/020/002/497/large_2x/map-thailand-graphic-clipart-design-free-png.png" alt="Thailand Map" class="w-96 h-96 object-contain" onerror="this.src=''; this.alt='Thailand map failed to load'; this.style.display='none';">
-                        
-                        <!-- Interactive Dots on Map -->
-                        <div class="absolute top-1/4 left-1/3 w-3 h-3 bg-red-500 rounded-full pulse-dot cursor-pointer" title="Bangkok - Major Export Hub"></div>
-                        <div class="absolute top-1/2 right-1/4 w-3 h-3 bg-blue-500 rounded-full pulse-dot cursor-pointer" title="Eastern Seaboard - Industrial Zone"></div>
-                        <div class="absolute bottom-1/3 left-1/2 w-3 h-3 bg-green-500 rounded-full pulse-dot cursor-pointer" title="Southern Region - Agriculture"></div>
-                        <div class="absolute top-1/3 right-1/3 w-3 h-3 bg-orange-500 rounded-full pulse-dot cursor-pointer" title="Northern Region - Rice Production"></div>
-                    </div>
+        <!-- Thailand Map Section -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6 text-center">Thailand Economic Overview</h3>
+            <div class="flex justify-center">
+                <div class="relative w-96 h-96">
+                    <img src="https://static.vecteezy.com/system/resources/previews/020/002/497/large_2x/map-thailand-graphic-clipart-design-free-png.png" 
+                         alt="Thailand Map" 
+                         class="w-96 h-96 object-contain"
+                         onerror="this.src=''; this.alt='Thailand map failed to load'; this.style.display='none';">
                     
+                    <!-- Bangkok - Major Export Hub -->
+                    <div class="absolute top-48 left-44 transform -translate-x-1/2 -translate-y-1/2">
+                        <div class="bg-blue-800 text-white px-3 py-2 rounded-lg shadow-lg text-xs font-semibold">
+                            <div class="text-center">Bangkok</div>
+                            <div class="text-yellow-300">Export: $89.2B</div>
+                            <div class="text-blue-200">Import: $67.8B</div>
+                        </div>
+                        <div class="w-4 h-4 bg-blue-800 rounded-full mx-auto mt-1"></div>
+                    </div>
+
+                    <!-- Chiang Mai - Northern Hub -->
+                    <div class="absolute top-20 left-36 transform -translate-x-1/2 -translate-y-1/2">
+                        <div class="bg-yellow-600 text-white px-2 py-1 rounded-lg shadow-lg text-xs font-semibold">
+                            <div class="text-center">Chiang Mai</div>
+                            <div class="text-blue-900">Export: $12.4B</div>
+                            <div class="text-yellow-200">Import: $8.9B</div>
+                        </div>
+                        <div class="w-3 h-3 bg-yellow-600 rounded-full mx-auto mt-1"></div>
+                    </div>
+
+                    <!-- Phuket - Southern Tourism & Trade -->
+                    <div class="absolute top-80 left-32 transform -translate-x-1/2 -translate-y-1/2">
+                        <div class="bg-blue-800 text-white px-2 py-1 rounded-lg shadow-lg text-xs font-semibold">
+                            <div class="text-center">Phuket</div>
+                            <div class="text-yellow-300">Export: $8.7B</div>
+                            <div class="text-blue-200">Import: $15.2B</div>
+                        </div>
+                        <div class="w-3 h-3 bg-blue-800 rounded-full mx-auto mt-1"></div>
+                    </div>
+
+                    <!-- Rayong - Industrial Zone -->
+                    <div class="absolute top-56 left-56 transform -translate-x-1/2 -translate-y-1/2">
+                        <div class="bg-yellow-600 text-white px-2 py-1 rounded-lg shadow-lg text-xs font-semibold">
+                            <div class="text-center">Rayong</div>
+                            <div class="text-blue-900">Export: $45.3B</div>
+                            <div class="text-yellow-200">Import: $32.1B</div>
+                        </div>
+                        <div class="w-3 h-3 bg-yellow-600 rounded-full mx-auto mt-1"></div>
+                    </div>
+
+                    <!-- Songkhla - Southern Port -->
+                    <div class="absolute top-88 left-48 transform -translate-x-1/2 -translate-y-1/2">
+                        <div class="bg-blue-800 text-white px-2 py-1 rounded-lg shadow-lg text-xs font-semibold">
+                            <div class="text-center">Songkhla</div>
+                            <div class="text-yellow-300">Export: $18.9B</div>
+                            <div class="text-blue-200">Import: $22.4B</div>
+                        </div>
+                        <div class="w-3 h-3 bg-blue-800 rounded-full mx-auto mt-1"></div>
+                    </div>
+
                     <!-- Legend -->
-                    <div class="mt-6 grid grid-cols-2 gap-4 text-xs">
-                        <div class="flex items-center space-x-2">
-                            <div class="w-2 h-2 bg-red-500 rounded-full"></div>
-                            <span>Export Hubs</span>
+                    <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 p-3 rounded-lg shadow-lg">
+                        <div class="text-xs font-semibold text-gray-700 mb-2">Economic Hubs</div>
+                        <div class="flex items-center space-x-2 mb-1">
+                            <div class="w-3 h-3 bg-blue-800 rounded-full"></div>
+                            <span class="text-xs text-gray-600">Major Export Centers</span>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                            <span>Industrial Zones</span>
+                            <div class="w-3 h-3 bg-yellow-600 rounded-full"></div>
+                            <span class="text-xs text-gray-600">Industrial Zones</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                            <span>Agriculture</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
-                            <span>Rice Production</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column - Additional Info -->
-            <div class="lg:col-span-1 space-y-6">
-                <!-- Farmer Statistics -->
-                <div class="bg-white rounded-lg p-6 card-shadow">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Farmer Statistics</h3>
-                    <canvas id="farmerChart" width="400" height="300"></canvas>
-                </div>
-
-                <!-- Recent Trade Activities -->
-                <div class="bg-white rounded-lg p-6 card-shadow">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Activities</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start space-x-3">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                            <div>
-                                <p class="text-sm font-medium">Rice export to China increased</p>
-                                <p class="text-xs text-gray-500">2 hours ago</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                            <div>
-                                <p class="text-sm font-medium">New farmer registration surge</p>
-                                <p class="text-xs text-gray-500">5 hours ago</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
-                            <div>
-                                <p class="text-sm font-medium">Electronics export milestone</p>
-                                <p class="text-xs text-gray-500">1 day ago</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
-                            <div>
-                                <p class="text-sm font-medium">Trade agreement signed</p>
-                                <p class="text-xs text-gray-500">2 days ago</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="bg-white rounded-lg p-6 card-shadow">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
-                    <div class="space-y-3">
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
-                            Generate Trade Report
-                        </button>
-                        <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
-                            View Farmer Database
-                        </button>
-                        <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
-                            Export Analytics
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Monthly Tax Revenue Chart -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Monthly Tax Revenue Trend</h3>
+                <div class="h-48 flex items-end justify-between space-x-2 px-4 py-4 bg-gray-50 rounded-lg">
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 88px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Jan</span>
+                        <span class="text-xs text-yellow-600 font-medium">220B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 78px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Feb</span>
+                        <span class="text-xs text-yellow-600 font-medium">195B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 98px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Mar</span>
+                        <span class="text-xs text-yellow-600 font-medium">245B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 92px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Apr</span>
+                        <span class="text-xs text-yellow-600 font-medium">230B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 106px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">May</span>
+                        <span class="text-xs text-yellow-600 font-medium">265B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 96px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Jun</span>
+                        <span class="text-xs text-yellow-600 font-medium">240B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 112px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Jul</span>
+                        <span class="text-xs text-yellow-600 font-medium">280B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 102px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Aug</span>
+                        <span class="text-xs text-yellow-600 font-medium">255B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 116px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Sep</span>
+                        <span class="text-xs text-yellow-600 font-medium">290B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 110px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Oct</span>
+                        <span class="text-xs text-yellow-600 font-medium">275B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 124px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Nov</span>
+                        <span class="text-xs text-yellow-600 font-medium">310B</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-6 bg-yellow-500 rounded-t" style="height: 118px;"></div>
+                        <span class="text-xs mt-2 text-gray-600">Dec</span>
+                        <span class="text-xs text-yellow-600 font-medium">295B</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trade Balance Chart -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Import vs Export Comparison</h3>
+                <div class="h-48 flex items-end justify-center space-x-8 px-4 py-4 bg-gray-50 rounded-lg">
+                    <div class="flex flex-col items-center space-y-4">
+                        <span class="text-sm font-medium text-gray-700">Q1</span>
+                        <div class="flex items-end space-x-2">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 bg-blue-800 rounded-t" style="height: 137px;"></div>
+                                <span class="text-xs mt-1 text-blue-800">68.5B</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 bg-yellow-500 rounded-t" style="height: 128px;"></div>
+                                <span class="text-xs mt-1 text-yellow-600">64.2B</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center space-y-4">
+                        <span class="text-sm font-medium text-gray-700">Q2</span>
+                        <div class="flex items-end space-x-2">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 bg-blue-800 rounded-t" style="height: 144px;"></div>
+                                <span class="text-xs mt-1 text-blue-800">72.1B</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 bg-yellow-500 rounded-t" style="height: 138px;"></div>
+                                <span class="text-xs mt-1 text-yellow-600">68.9B</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center space-y-4">
+                        <span class="text-sm font-medium text-gray-700">Q3</span>
+                        <div class="flex items-end space-x-2">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 bg-blue-800 rounded-t" style="height: 152px;"></div>
+                                <span class="text-xs mt-1 text-blue-800">75.8B</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 bg-yellow-500 rounded-t" style="height: 143px;"></div>
+                                <span class="text-xs mt-1 text-yellow-600">71.5B</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center space-y-4">
+                        <span class="text-sm font-medium text-gray-700">Q4</span>
+                        <div class="flex items-end space-x-2">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 bg-blue-800 rounded-t" style="height: 138px;"></div>
+                                <span class="text-xs mt-1 text-blue-800">69.0B</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 bg-yellow-500 rounded-t" style="height: 126px;"></div>
+                                <span class="text-xs mt-1 text-yellow-600">63.2B</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center space-x-6 mt-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-blue-800 rounded"></div>
+                        <span class="text-sm text-gray-600">Exports</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-yellow-500 rounded"></div>
+                        <span class="text-sm text-gray-600">Imports</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Tables Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Top Export Categories -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Top Export Categories</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">🖥️</span>
+                            <span class="font-medium">Electronics & Machinery</span>
+                        </div>
+                        <span class="font-bold text-blue-800">$89.2B</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">🚗</span>
+                            <span class="font-medium">Automotive</span>
+                        </div>
+                        <span class="font-bold text-blue-800">$45.7B</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">🌾</span>
+                            <span class="font-medium">Agricultural Products</span>
+                        </div>
+                        <span class="font-bold text-blue-800">$32.1B</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">👕</span>
+                            <span class="font-medium">Textiles & Garments</span>
+                        </div>
+                        <span class="font-bold text-blue-800">$18.9B</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tax Collection by Type -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Tax Collection by Type</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">🏢</span>
+                            <span class="font-medium">Corporate Income Tax</span>
+                        </div>
+                        <span class="font-bold text-yellow-600">฿892B</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">👤</span>
+                            <span class="font-medium">Personal Income Tax</span>
+                        </div>
+                        <span class="font-bold text-yellow-600">฿654B</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">🛒</span>
+                            <span class="font-medium">Value Added Tax</span>
+                        </div>
+                        <span class="font-bold text-yellow-600">฿1.12T</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">🚛</span>
+                            <span class="font-medium">Customs Duties</span>
+                        </div>
+                        <span class="font-bold text-yellow-600">฿174B</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="mt-8 bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button class="flex flex-col items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                    <span class="text-2xl mb-2">📊</span>
+                    <span class="text-sm font-medium text-blue-700">Generate Report</span>
+                </button>
+                <button class="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+                    <span class="text-2xl mb-2">💳</span>
+                    <span class="text-sm font-medium text-green-700">Tax Filing</span>
+                </button>
+                <button class="flex flex-col items-center p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors">
+                    <span class="text-2xl mb-2">📋</span>
+                    <span class="text-sm font-medium text-orange-700">Import License</span>
+                </button>
+                <button class="flex flex-col items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+                    <span class="text-2xl mb-2">🌐</span>
+                    <span class="text-sm font-medium text-purple-700">Export Portal</span>
+                </button>
+            </div>
+        </div>
+    </main>
 
     <script>
-        // Update timestamp
-        document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
-
-        // Trade Overview Chart
-        const tradeCtx = document.getElementById('tradeChart').getContext('2d');
-        new Chart(tradeCtx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                datasets: [{
-                    label: 'Exports',
-                    data: [23.5, 25.2, 24.8, 26.1, 27.3, 28.5],
-                    borderColor: '#10B981',
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                    tension: 0.4
-                }, {
-                    label: 'Imports',
-                    data: [20.1, 21.5, 22.3, 21.8, 22.9, 23.7],
-                    borderColor: '#3B82F6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        title: {
-                            display: true,
-                            text: 'Billion USD'
-                        }
-                    }
-                }
-            }
+        // Set current date
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
         });
 
-        // Farmer Statistics Chart
-        const farmerCtx = document.getElementById('farmerChart').getContext('2d');
-        new Chart(farmerCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Rice Farmers', 'Fruit Farmers', 'Vegetable Farmers', 'Others'],
-                datasets: [{
-                    data: [45, 25, 20, 10],
-                    backgroundColor: [
-                        '#F59E0B',
-                        '#10B981',
-                        '#3B82F6',
-                        '#8B5CF6'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }
-        });
 
-        // Simulate real-time updates
-        setInterval(() => {
-            const exports = document.getElementById('totalExports');
-            const imports = document.getElementById('totalImports');
-            const farmers = document.getElementById('activeFarmers');
-            const balance = document.getElementById('tradeBalance');
-            
-            // Add small random variations
-            const exportVal = 284.5 + (Math.random() - 0.5) * 2;
-            const importVal = 251.2 + (Math.random() - 0.5) * 2;
-            const farmerVal = 2.8 + (Math.random() - 0.5) * 0.1;
-            const balanceVal = exportVal - importVal;
-            
-            exports.textContent = `$${exportVal.toFixed(1)}B`;
-            imports.textContent = `$${importVal.toFixed(1)}B`;
-            farmers.textContent = `${farmerVal.toFixed(1)}M`;
-            balance.textContent = `+$${balanceVal.toFixed(1)}B`;
-            
-            document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
-        }, 30000);
 
-        // Interactive map dots
-        document.querySelectorAll('.pulse-dot').forEach(dot => {
-            dot.addEventListener('click', function() {
-                const title = this.getAttribute('title');
-                alert(`Region Info: ${title}\n\nClick to view detailed statistics for this region.`);
-            });
-        });
-
-        // Quick action buttons
+        // Add click functionality to quick action buttons
         document.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', function() {
-                const action = this.textContent.trim();
-                alert(`${action} feature would be implemented here.\n\nThis is a demo dashboard showing the UI design.`);
+                const action = this.querySelector('span:last-child').textContent;
+                alert(`Opening ${action} module...`);
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dbfc650402895a',t:'MTc1NzY0NDI1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ce1ff690778955',t:'MTc1NzQ5ODkxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
