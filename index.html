@@ -50,8 +50,8 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Tax Revenue (YTD)</p>
-                        <p class="text-2xl font-bold text-yellow-600 animate-number" data-target="2840000000000">฿<span id="taxRevenue">0</span>T</p>
-                        <p class="text-sm text-yellow-500">↗ +8.2% vs last year</p>
+                        <p class="text-2xl font-bold text-yellow-600 animate-number" data-target="1719210000000">฿<span id="taxRevenue">0</span>B</p>
+                        <p class="text-sm text-yellow-500">↗ +6.9% vs last year</p>
                     </div>
                     <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
                         <span class="text-2xl">💰</span>
@@ -64,8 +64,8 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Export Value</p>
-                        <p class="text-2xl font-bold text-blue-800 animate-number" data-target="285400000000">$<span id="exportValue">0</span>B</p>
-                        <p class="text-sm text-blue-700">↗ +12.5% vs last year</p>
+                        <p class="text-2xl font-bold text-blue-800 animate-number" data-target="81532300000">$<span id="exportValue">0</span>B</p>
+                        <p class="text-sm text-blue-700">↗ +15.2% vs last year</p>
                     </div>
                     <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                         <span class="text-2xl">📦</span>
@@ -78,8 +78,8 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Import Value</p>
-                        <p class="text-2xl font-bold text-yellow-600 animate-number" data-target="267800000000">$<span id="importValue">0</span>B</p>
-                        <p class="text-sm text-yellow-500">↗ +9.8% vs last year</p>
+                        <p class="text-2xl font-bold text-yellow-600 animate-number" data-target="5570000000000">$<span id="importValue">0</span>B</p>
+                        <p class="text-sm text-yellow-500">↗ +15.5% vs last year</p>
                     </div>
                     <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
                         <span class="text-2xl">🚢</span>
@@ -92,8 +92,8 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Trade Balance</p>
-                        <p class="text-2xl font-bold text-blue-800 animate-number" data-target="17600000000">$<span id="tradeBalance">0</span>B</p>
-                        <p class="text-sm text-blue-700">↗ +24.3% vs last year</p>
+                        <p class="text-2xl font-bold text-blue-800 animate-number" data-target="1320000000">$<span id="tradeBalance">0</span>B</p>
+                        <p class="text-sm text-blue-700">↗ +0.3% vs last year</p>
                     </div>
                     <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                         <span class="text-2xl">⚖️</span>
@@ -450,10 +450,10 @@
 
         // Animate numbers on load
         window.addEventListener('DOMContentLoaded', () => {
-            animateNumber('taxRevenue', 2840000000000, 1e12, 2, '', '');
-            animateNumber('exportValue', 285400000000, 1e9, 1, '', '');
-            animateNumber('importValue', 267800000000, 1e9, 1, '', '');
-            animateNumber('tradeBalance', 17600000000, 1e9, 1, '', '');
+            animateNumber('taxRevenue', 1719210000000, 1e12, 2, '', '');
+            animateNumber('exportValue', 81532300000, 1e9, 1, '', '');
+            animateNumber('importValue', 5570000000000, 1e9, 1, '', '');
+            animateNumber('tradeBalance', 1320000000, 1e9, 1, '', '');
         });
 
         // Add click functionality to quick action buttons
