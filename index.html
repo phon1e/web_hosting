@@ -50,7 +50,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Tax Revenue (YTD)</p>
-                        <p class="text-2xl font-bold text-yellow-600">฿2.84T</p>
+                        <p class="text-2xl font-bold text-yellow-600 animate-number" data-target="2840000000000">฿<span id="taxRevenue">0</span>T</p>
                         <p class="text-sm text-yellow-500">↗ +8.2% vs last year</p>
                     </div>
                     <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
@@ -64,7 +64,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Export Value</p>
-                        <p class="text-2xl font-bold text-blue-800">$285.4B</p>
+                        <p class="text-2xl font-bold text-blue-800 animate-number" data-target="285400000000">$<span id="exportValue">0</span>B</p>
                         <p class="text-sm text-blue-700">↗ +12.5% vs last year</p>
                     </div>
                     <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -78,7 +78,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Import Value</p>
-                        <p class="text-2xl font-bold text-yellow-600">$267.8B</p>
+                        <p class="text-2xl font-bold text-yellow-600 animate-number" data-target="267800000000">$<span id="importValue">0</span>B</p>
                         <p class="text-sm text-yellow-500">↗ +9.8% vs last year</p>
                     </div>
                     <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
@@ -92,7 +92,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Trade Balance</p>
-                        <p class="text-2xl font-bold text-blue-800">$17.6B</p>
+                        <p class="text-2xl font-bold text-blue-800 animate-number" data-target="17600000000">$<span id="tradeBalance">0</span>B</p>
                         <p class="text-sm text-blue-700">↗ +24.3% vs last year</p>
                     </div>
                     <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -424,7 +424,37 @@
             minute: '2-digit'
         });
 
+        // Number animation function
+        function animateNumber(id, target, divisor = 1e12, decimals = 2, prefix = '', suffix = '') {
+            const el = document.getElementById(id);
+            let start = 0;
+            const duration = 1200;
+            const startTime = performance.now();
 
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const value = Math.floor(progress * (target - start) + start);
+                let display = (value / divisor).toFixed(decimals);
+                // Remove decimals if not needed
+                if (decimals === 0) display = Math.floor(value / divisor);
+                el.textContent = prefix + display + suffix;
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = prefix + (target / divisor).toFixed(decimals) + suffix;
+                }
+            }
+            requestAnimationFrame(update);
+        }
+
+        // Animate numbers on load
+        window.addEventListener('DOMContentLoaded', () => {
+            animateNumber('taxRevenue', 2840000000000, 1e12, 2, '', '');
+            animateNumber('exportValue', 285400000000, 1e9, 1, '', '');
+            animateNumber('importValue', 267800000000, 1e9, 1, '', '');
+            animateNumber('tradeBalance', 17600000000, 1e9, 1, '', '');
+        });
 
         // Add click functionality to quick action buttons
         document.querySelectorAll('button').forEach(button => {
